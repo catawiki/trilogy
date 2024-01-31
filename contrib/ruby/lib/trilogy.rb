@@ -9,6 +9,7 @@ require "trilogy/encoding"
 class Trilogy
   def initialize(options = {})
     options = options.transform_keys(&:to_sym)
+    raise StandardError.new("trilogy options = #{options.inspect}")
     options[:port] = options[:port].to_i if options[:port]
     mysql_encoding = options[:encoding] || "utf8mb4"
     encoding = Trilogy::Encoding.find(mysql_encoding)
